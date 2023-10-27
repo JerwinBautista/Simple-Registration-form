@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="crossorigin="anonymous"></script>
+	<title>Registration Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="wrapper">
+	<div class="registration_form">
+		<div class="title">
+			Hokage Training Camp Registration
+		</div>
+
+		<form id="registration_form">
+			<div class="form_wrap">
+				<div class="input_wrap">
+					<label for="username">Username</label>
+					<input type="text" id="username" placeholder="Your Username ....." required>
+				</div>
+				<div class="input_wrap">
+					<label for="email">Email Address</label>
+					<input type="email" id="email" placeholder="Your Email ....." required>
+				</div>
+				<div class="input_wrap">
+					<label for="password">Password</label>
+					<input type="password" id="password" placeholder="Your Password ....." required>
+				</div>
+				<div class="input_wrap">
+					<label for="confirmPassword">Confirm Password</label>
+					<input type="password" id="confirmPassword" placeholder="Confirm your Password ....." required>
+				</div>
+				<div class="input_wrap">
+					<button class="submit_btn" id="btn" type="submit">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#registration_form').submit(function(event) {
+    event.preventDefault();
+    
+    var username = $('#username').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var confirmPassword = $('#confirmPassword').val();
+
+    if (username.trim() === '') {
+      alert('Please enter your Username');
+      return false;
+    }
+
+    if (email.trim() === '') {
+      alert('Please enter your email address');
+      return false;
+    }
+
+    if (password.trim() === '') {
+      alert('Please enter a strong password');
+      return false;
+    }
+
+    if (password.trim().length < 8) {
+      alert('Password must be at least 8 characters long');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match. Please try again.');
+      return false;
+    } else {
+      var formData = 'Name: ' + username + '\nEmail: ' + email + '\nPassword: ' + password;
+      alert(formData);
+    }
+  });
+});
+</script>
+</body>
+</html>
